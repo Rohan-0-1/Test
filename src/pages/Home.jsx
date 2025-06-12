@@ -1,109 +1,134 @@
 import { useNavigate } from 'react-router-dom';
-import { Users, UserCog, UserCircle, Building2, Heart, Clock, Shield } from 'lucide-react';
+import { Users, UserCog, UserCircle, Building2, Heart, Clock, Shield, Sparkles } from 'lucide-react';
+import { GlassCard } from '../components/common';
 
 const Home = () => {
   const navigate = useNavigate();
 
+  const roles = [
+    {
+      title: "Admin",
+      description: "System administration and management",
+      icon: UserCog,
+      path: "/admin-login",
+      gradient: "gradient-admin",
+      delay: "animate-stagger-1"
+    },
+    {
+      title: "Doctor", 
+      description: "Patient management and consultations",
+      icon: UserCircle,
+      path: "/doctor-login",
+      gradient: "gradient-doctor",
+      delay: "animate-stagger-2"
+    },
+    {
+      title: "Receptionist",
+      description: "Appointment scheduling and front desk",
+      icon: Users,
+      path: "/receptionist-login", 
+      gradient: "gradient-receptionist",
+      delay: "animate-stagger-3"
+    }
+  ];
+
+  const features = [
+    {
+      icon: Heart,
+      title: "Patient Care",
+      description: "Streamlined patient management for better healthcare delivery"
+    },
+    {
+      icon: Clock,
+      title: "24/7 Access", 
+      description: "Round-the-clock access to medical records and resources"
+    },
+    {
+      icon: Shield,
+      title: "Secure System",
+      description: "Advanced security measures to protect sensitive data"
+    }
+  ];
+
   return (
-    <div className="min-h-screen bg-gray-50 relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234B5563' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }} />
+    <div className="min-h-screen relative overflow-hidden">
+      {/* Animated Background */}
+      <div className="absolute inset-0 gradient-admin">
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-20 left-20 w-72 h-72 bg-white rounded-full mix-blend-multiply filter blur-xl animate-float"></div>
+          <div className="absolute top-40 right-20 w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl animate-float" style={{animationDelay: '2s'}}></div>
+          <div className="absolute -bottom-8 left-1/2 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl animate-float" style={{animationDelay: '4s'}}></div>
+        </div>
       </div>
 
       {/* Header Section */}
-      <div className="bg-blue-600 h-64 w-full relative">
-        <div className="container mx-auto px-6 py-12">
-          <div className="flex items-center space-x-3 justify-center">
-            <Building2 className="w-10 h-10 text-white" />
-            <h1 className="text-3xl font-bold text-white">Hospital Management System</h1>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Content */}
-      <div className="container mx-auto px-6 -mt-32 relative">
-        <div className="bg-white rounded-xl shadow-xl p-6 backdrop-blur-sm bg-white/95">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">Select Your Role to Continue</h2>
-            <p className="text-gray-600">Access your personalized dashboard based on your role</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            {/* Admin Card */}
-            <button
-              onClick={() => navigate('/admin-login')}
-              className="group relative bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100"
-            >
-              <div className="flex flex-col items-center space-y-4">
-                <div className="p-4 bg-blue-100 rounded-full group-hover:bg-blue-500 transition-colors duration-300">
-                  <UserCog className="w-8 h-8 text-blue-600 group-hover:text-white" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-800">Admin</h3>
-                <p className="text-sm text-gray-600 text-center">System administration and management</p>
+      <div className="relative z-10 container mx-auto px-6 py-12">
+        <div className="text-center mb-16 animate-fadeInUp">
+          <div className="flex items-center justify-center space-x-4 mb-6">
+            <div className="p-4 glass rounded-2xl animate-pulse-glow">
+              <Building2 className="w-12 h-12 text-white" />
+            </div>
+            <div>
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">
+                Hospital Management
+              </h1>
+              <div className="flex items-center justify-center gap-2">
+                <Sparkles className="w-5 h-5 text-yellow-300" />
+                <span className="text-xl text-white/90">System</span>
+                <Sparkles className="w-5 h-5 text-yellow-300" />
               </div>
-              <div className="absolute inset-0 border-2 border-transparent hover:border-blue-500 rounded-xl transition-colors duration-300" />
-            </button>
-
-            {/* Doctor Card */}
-            <button
-              onClick={() => navigate('/doctor-login')}
-              className="group relative bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100"
-            >
-              <div className="flex flex-col items-center space-y-4">
-                <div className="p-4 bg-blue-100 rounded-full group-hover:bg-blue-500 transition-colors duration-300">
-                  <UserCircle className="w-8 h-8 text-blue-600 group-hover:text-white" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-800">Doctor</h3>
-                <p className="text-sm text-gray-600 text-center">Patient management and consultations</p>
-              </div>
-              <div className="absolute inset-0 border-2 border-transparent hover:border-blue-500 rounded-xl transition-colors duration-300" />
-            </button>
-
-            {/* Receptionist Card */}
-            <button
-              onClick={() => navigate('/receptionist-login')}
-              className="group relative bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100"
-            >
-              <div className="flex flex-col items-center space-y-4">
-                <div className="p-4 bg-blue-100 rounded-full group-hover:bg-blue-500 transition-colors duration-300">
-                  <Users className="w-8 h-8 text-blue-600 group-hover:text-white" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-800">Receptionist</h3>
-                <p className="text-sm text-gray-600 text-center">Appointment scheduling and front desk</p>
-              </div>
-              <div className="absolute inset-0 border-2 border-transparent hover:border-blue-500 rounded-xl transition-colors duration-300" />
-            </button>
+            </div>
           </div>
+          <p className="text-xl text-white/80 max-w-2xl mx-auto">
+            Access your personalized dashboard based on your role
+          </p>
         </div>
 
-        {/* Features Section instead of simple footer */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto pb-12">
-          <div className="flex flex-col items-center text-center space-y-4">
-            <div className="p-3 bg-blue-100 rounded-full">
-              <Heart className="w-6 h-6 text-blue-600" />
+        {/* Role Selection Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-20">
+          {roles.map((role, index) => (
+            <GlassCard 
+              key={role.title}
+              className={`text-center cursor-pointer group animate-fadeInUp ${role.delay}`}
+              onClick={() => navigate(role.path)}
+            >
+              <div className="relative">
+                <div className={`w-20 h-20 ${role.gradient} rounded-2xl mx-auto mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                  <role.icon className="w-10 h-10 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-800 mb-3">{role.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{role.description}</p>
+                
+                {/* Hover effect overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+              </div>
+            </GlassCard>
+          ))}
+        </div>
+
+        {/* Features Section */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          {features.map((feature, index) => (
+            <div 
+              key={feature.title}
+              className={`text-center animate-fadeInUp animate-stagger-${index + 1}`}
+            >
+              <GlassCard className="h-full" hover={false}>
+                <div className="p-4 glass rounded-2xl w-16 h-16 mx-auto mb-6 flex items-center justify-center">
+                  <feature.icon className="w-8 h-8 text-blue-600" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-800 mb-3">{feature.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+              </GlassCard>
             </div>
-            <h3 className="text-lg font-semibold text-gray-800">Patient Care</h3>
-            <p className="text-sm text-gray-600">Streamlined patient management for better healthcare delivery</p>
-          </div>
-          
-          <div className="flex flex-col items-center text-center space-y-4">
-            <div className="p-3 bg-blue-100 rounded-full">
-              <Clock className="w-6 h-6 text-blue-600" />
-            </div>
-            <h3 className="text-lg font-semibold text-gray-800">24/7 Access</h3>
-            <p className="text-sm text-gray-600">Round-the-clock access to medical records and resources</p>
-          </div>
-          
-          <div className="flex flex-col items-center text-center space-y-4">
-            <div className="p-3 bg-blue-100 rounded-full">
-              <Shield className="w-6 h-6 text-blue-600" />
-            </div>
-            <h3 className="text-lg font-semibold text-gray-800">Secure System</h3>
-            <p className="text-sm text-gray-600">Advanced security measures to protect sensitive data</p>
-          </div>
+          ))}
+        </div>
+
+        {/* Footer */}
+        <div className="text-center mt-16 animate-fadeInUp animate-stagger-4">
+          <p className="text-white/70">
+            © 2024 Hospital Management System. Secure • Reliable • Professional
+          </p>
         </div>
       </div>
     </div>
